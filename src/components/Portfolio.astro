@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('portfolio'))
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 8);
+
+---
+
+
+<section class="container">
+    <h2>Portafolio</h2>
+    <p>Desliza hacia la izquierda para ver muestras de nuestro trabajo.</p>
+    <div class="swiper portfolio-swiper">
+        <div class="swiper-wrapper">
+            {
+                posts.map((post) => (
+                    <div class="swiper-slide portfolio-item">
+                        <a href={`/portfolio/${post.slug}/`} class="portfolio-item__link">
+                            <img width={720} height={360} src={post.data.heroImage} alt="{post.data.title}" class="portfolio-item__image" />
+                        </a>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    h2{
+        color: #333;
+        font-size: 3rem;
+        margin-bottom: 0;
+    }
+    p {
+        color: #666;
+    }
+    .container {
+        width: 92%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+</style>
+
+<script>
+    import Swiper from 'swiper';
+    const swiper = new Swiper('.portfolio-swiper', {
+        slidesPerView: 2,
+        spaceBetween: 12,
+        centeredSlides: true,
+        centeredSlidesBounds: true,
+        loop: true,
+    });
+</script>

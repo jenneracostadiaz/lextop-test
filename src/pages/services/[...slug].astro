@@ -1,0 +1,72 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+    const posts = await getCollection('services');
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: post,
+    }));
+}
+type Props = CollectionEntry<'services'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+
+const SITE_TITLE = post.data.title;
+const SITE_DESCRIPTION = post.data.description;
+const HERO_IMAGE = post.data.heroImage;
+const TAGS:string[] = post.data.tags;
+
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <img src={HERO_IMAGE} alt={SITE_TITLE} />
+            <h1 class="text-center">{SITE_TITLE}</h1>
+            <p class="text-center">{SITE_DESCRIPTION}</p>
+            <Content />
+            <p class="text-center tags">
+                {TAGS.map(tag => (
+                    <a href={`/tags/${tag}`}>#{tag}</a>
+                ))}
+            </p>
+        </main>
+        <Footer />
+    </body>
+</html>
+
+<style>
+    img {
+        width: 100%;
+        height: auto;
+    }
+    .text-center {
+        text-align: center;
+    }
+    .tags {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .tags a{
+        background-color: #f0f0f0;
+        padding: 4px 8px;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #333;
+        text-transform: uppercase;
+    }
+</style>

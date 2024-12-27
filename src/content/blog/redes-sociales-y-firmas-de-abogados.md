@@ -1,0 +1,19 @@
+---
+title: 'Redes sociales y firmas de abogados'
+description: 'Publicado originalmente en el blog de Legal Social Media'
+pubDate: '2015-04-05'
+author: 'Walter Cobos'
+company: 'Lextop'
+heroImage: "https://res.cloudinary.com/dm5ag0ai3/image/upload/v1731261237/firmas2_d31e7b.jpg"
+---
+Estimados lectores, lo queramos o no, vivimos en una época en donde los métodos y estrategias de marketing para la venta de productos o prestación de diversos servicios cambian rápidamente debido a que el usuario en general pasa cada vez mas tiempo frente a su pc/laptop, tablet o smartphone; sólo para que se hagan una idea podemos ver las estadísticas en el siguiente articulo del Blog Social Media for Lawfirms - Social Media Statistics For Lawyers.
+
+Por mencionar uno de los ejemplos mas importantes en cuanto a estos cambios y su relación con los servicios legales, tenemos el caso [Axiom Law](https://www.axiomlaw.com/) – donde nos encontramos con slogans como “olvídate de todo lo que conoces sobre servicios legales” o “esta idea lo cambia todo”. Así, Axiom se viene convirtiendo en el prototipo de nueva firma de abogados: moderna, en donde sus abogados no usan corbata y con una súper producción audiovisual que te puede hacer derramar una lagrima; asi es, esto es el futuro de los servicios legales; que va de la mano con aquellos botones que se incluyen en una pagina web y que te trasladan a las redes sociales más importantes: Facebook, Twitter, LinkedIn, Google + y YouTube.
+
+En mi experiencia profesional durante 14 años como Gerente Legal de una empresa multinacional he conocido muchos abogados y muchas firmas. Siempre creí (y aún lo creo) que los abogados son una jungla diferente en cuanto a la forma de ejecutar o diseñar el marketing de sus servicios (si es que lo hacen); algunos son muy cautelosos o conservadores, otros muy “éticos” y en teoría la “ética” te dice que un abogado no debe hacer marketing de sus servicios, con lo cual no estoy de acuerdo; la mayoría, en todo caso, simplemente no tiene suficiente tiempo para conocer y comprender cual es el alcance actual de una red social como las antes mencionadas. Pero valgan verdades, estamos en el año 2015 y el caso Axiom no es una ficción, así como tampoco lo es la repentina empatía con las redes sociales de los grandes despachos en USA y Europa, en pocas palabras el acercamiento de despachos a redes sociales es poco a poco tendencia en la actividad de servicios legales.
+
+Como sabemos, lo que es tendencia (trend) en el mundo desarrollado es luego tendencia es los países emergentes o en vías de desarrollo, en donde claro está, se encuentra el Perú. En nuestro país aun son poquísimas las firmas de abogados que tienen presencia en redes, sin embargo ya empiezan a asomarse algunos nombres.
+
+En este orden de ideas, es claro que para una firma de abogados o empresa de servicios legales (por ejemplo de cobranzas o notarías) se vuelve imperativo en estos días tener presencia en las redes sociales, ya que no solo les ayuda a entrar en el mundo moderno sino que también serán vistos como innovadores o renovados por sus clientes, el púbico objetivo, el publico en general y la competencia.
+
+Finalmente, les dejo este pensamiento: hace muchos, muchos años, a ningún encargado del manejo de una firma de abogados se le hubiese ocurrido pensar en que la misma podría prestar servicios legales integrales, vale decir, distintas ramas del derecho como civil, mercantil, tributario o ambiental desde la misma compañía; sin embargo, en la actualidad, como todos sabemos, los más grandes y exitosos despachos de abogados son justamente los que prestan la asesoría legal integral o completa. Si entendiste el mensaje y tienes una empresa de servicios legales en Perú y estás interesado en modernizar tu marketing y/o usar las redes sociales Legal Social Media es el aliado que estás buscando; los invito a contactarnos.

@@ -1,0 +1,95 @@
+---
+type SlidersType = {
+    src: string;
+    title: string;
+    button?: string;
+    link?: string;
+}
+
+const sliders: SlidersType[] = [
+    {
+        src: "https://res.cloudinary.com/dm5ag0ai3/image/upload/v1733096653/home1_twsgbx.png",
+        title: "Marketing Digital",
+        button: "Servicios",
+        link: "/marketing-digital"
+    },
+    {
+        src: "https://res.cloudinary.com/dm5ag0ai3/image/upload/v1733096653/home2_ibyayu.png",
+        title: "Experiencias Digitales",
+        button: "Portafolio",
+        link: "/experiencias-digitales"
+    },
+    {
+        src: "https://res.cloudinary.com/dm5ag0ai3/image/upload/v1733096653/home3_ult5tc.png",
+        title: "Ideas e Innovación",
+        button: "Contacto",
+        link: "/ideas-e-innovacion"
+    }
+]
+---
+<div class="swiper cover-swiper">
+    <div class="swiper-wrapper">
+        {
+            sliders.sort(() => Math.random() - 0.5).map((slider: SlidersType) => (
+                <div class="swiper-slide cover" style={`background-image: url('${slider.src}')`}>
+                    <div class="cover__container">
+                        <h2 class="cover__title">{slider.title}</h2>
+                        {
+                            slider.button && slider.link && (
+                                <a href={slider.link} class="cover__button">{slider.button}</a>
+                            )
+                        }
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</div>
+
+<style>
+    .swiper-wrapper{
+        width: 100%;
+        min-height: calc(60vh);
+    }
+    .cover{
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 60vh;
+        height: 88vh;
+        max-height: 94vh;
+    }
+
+    .cover__container{
+        width: 90%;
+        height: 100%;
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cover__title{
+        font-size: 7rem;
+        font-weight: 300;
+        color: white;
+    }
+
+    .cover__button{
+        margin-top: 1rem;
+        padding: 1rem 2rem;
+        background-color: var(--accent);
+        color: white;
+        text-decoration: none;
+        border-radius: 0.5rem;
+
+    }
+
+</style>
+
+<script>
+    import Swiper from 'swiper';
+    const swiper = new Swiper('.cover-swiper', {});
+</script>

@@ -1,0 +1,112 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import type { CollectionEntry } from 'astro:content';
+import { getCollection} from 'astro:content';
+
+const posts: CollectionEntry<'services'>[] = await getCollection('services');
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+</head>
+<body>
+<Header />
+<main class="services-container">
+    <section class="hero">
+        <h1 class="hero__title">Servicios</h1>
+        <p class="hero__description">Conoce nuestros servicios</p>
+    </section>
+    <section class="services-grid">
+        <ul class="services-list">
+            {
+                posts.map((post) => (
+                        <li class="service">
+                            <a href={`/services/${post.slug}/`} class="service__link">
+                                <img width={720} height={360} src={post.data.heroImage} alt={post.data.title} class="service__image" />
+                                <h4 class="service__title">{post.data.title}</h4>
+                            </a>
+                        </li>
+                ))
+            }
+        </ul>
+    </section>
+</main>
+<Footer />
+</body>
+</html>
+
+<style>
+    .hero {
+        text-align: center;
+        padding: 4rem 0;
+    }
+
+    .hero__title {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+    .hero__description {
+        margin: 0;
+        font-size: 1.25rem;
+    }
+
+    .services-container {
+        max-width: 1200px;
+        width: 90%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .services-grid {
+        display: flex;
+        justify-content: center;
+    }
+
+    .services-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        justify-content: center;
+        gap: 1rem;
+        list-style: none;
+        padding: 0;
+    }
+    .service {
+        border-radius: 0.75rem;
+        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+    .service__link {
+        display: block;
+        text-decoration: none;
+    }
+
+    .service__link:hover .service__image {
+        transform: scale(1.05);
+    }
+
+    .service__link:hover .service__title {
+        background-color: #edf2f7;
+    }
+
+    .service__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s;
+    }
+    .service__title {
+        margin: 0;
+        padding: 1rem;
+        background-color: #f7fafc;
+        text-align: center;
+        font-size: 1.25rem;
+        font-weight: 400;
+        transition: background-color 0.3s;
+    }
+</style>

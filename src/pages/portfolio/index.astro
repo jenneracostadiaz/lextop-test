@@ -1,0 +1,137 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+const posts = (await getCollection('portfolio')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+</head>
+<body>
+<Header />
+<main class="content-wrapper">
+
+    <section class="hero">
+        <h1 class="hero__title">Portafolio</h1>
+        <p class="hero__description">Aquí encontrarás una selección de nuestros trabajos más recientes.</p>
+    </section>
+
+    <section class="portfolio">
+        <ul class="portfolio-grid-masonry">
+            {
+                posts.map((post) => (
+                    <li class="portfolio-item">
+                        <a href={`/portfolio/${post.slug}/`} class="portfolio-item__link">
+                            <img width={720} height={360} src={post.data.heroImage} alt="{post.data.title}" class="portfolio-item__image" />
+                            <div class="portfolio-item__content">
+                                <h4 class="portfolio-item__title">{post.data.title}</h4>
+                                <time class="portfolio-item__date">
+                                    <FormattedDate date={post.data.pubDate} />
+                                </time>
+                            </div>
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </section>
+</main>
+<Footer />
+</body>
+</html>
+
+<style>
+    .hero {
+        text-align: center;
+        padding: 4rem 0;
+    }
+
+    .hero__title {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+    .hero__description {
+        margin: 0;
+        font-size: 1.25rem;
+    }
+
+    .content-wrapper {
+        padding: 0;
+        margin: 0 auto;
+        max-width: 1200px;
+        width: 90%;
+    }
+
+    .portfolio {
+        display: flex;
+        justify-content: center;
+    }
+
+    .portfolio-grid-masonry {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        margin: 0 auto;
+    }
+
+    .portfolio-item {
+        overflow: hidden;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    }
+
+    .portfolio-item__link {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        position: relative;
+    }
+
+    .portfolio-item__link:hover .portfolio-item__content {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .portfolio-item__link:hover .portfolio-item__image {
+        transform: scale(1.1);
+    }
+
+    .portfolio-item__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+
+    .portfolio-item__content {
+        padding: 1rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        transition: background-color 0.3s;
+    }
+
+    .portfolio-item__title {
+        margin: 0;
+        font-size: 1.25rem;
+        color: white;
+    }
+
+    .portfolio-item__date {
+        font-size: 0.875rem;
+    }
+
+</style>

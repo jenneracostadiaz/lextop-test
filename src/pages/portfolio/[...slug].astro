@@ -1,0 +1,91 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import BlogPost from '../../layouts/BlogPost.astro';
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Footer from "../../components/Footer.astro";
+
+export async function getStaticPaths() {
+    const posts = await getCollection('portfolio');
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: post,
+    }));
+}
+type Props = CollectionEntry<'portfolio'>;
+
+const post = Astro.props;
+const SITE_TITLE = post.data.title;
+const SITE_DESCRIPTION = post.data.client;
+const HERO_IMAGE = post.data.heroImage;
+
+const { Content } = await post.render();
+---
+
+<html lang="en">
+<head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+        main {
+            width: calc(100% - 2em);
+            max-width: 100%;
+            margin: 0;
+        }
+        .hero-image {
+            width: 100%;
+        }
+        .hero-image img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+        }
+        .prose {
+            width: 720px;
+            max-width: calc(100% - 2em);
+            margin: auto;
+            padding: 1em;
+            color: rgb(var(--gray-dark));
+        }
+        .title {
+            margin-bottom: 1em;
+            padding: 1em 0;
+            text-align: center;
+            line-height: 1;
+        }
+        .title h1 {
+            margin: 0 0 0.5em 0;
+        }
+        .date {
+            margin-bottom: 0.5em;
+            color: rgb(var(--gray));
+        }
+        .last-updated-on {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+<Header />
+<main>
+    <article>
+        <div class="hero-image">
+            <img src={HERO_IMAGE} alt={SITE_TITLE} />
+        </div>
+        <div class="prose">
+            <div class="title">
+                <div class="date">
+                    <FormattedDate date={post.data.pubDate} />
+                </div>
+                <h1>{SITE_TITLE}</h1>
+                <hr />
+            </div>
+            <Content />
+        </div>
+    </article>
+</main>
+<Footer />
+</body>
+</html>

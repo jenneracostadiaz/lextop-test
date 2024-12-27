@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('services'))
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 8);
+
+---
+
+
+<section class="container my-12">
+    <h2>Servicios</h2>
+    <p>Desliza hacia la izquierda para conocer nuestros servicios.</p>
+    <div class="swiper services-swiper">
+        <div class="swiper-wrapper">
+            {
+                posts.map((post) => (
+                    <article class="swiper-slide portfolio-item service">
+                        <a href={`/services/${post.slug}/`} class="service__link">
+                            <img width={720} height={360} src={post.data.heroImage} alt={post.data.title} class="service__image" />
+                            <h4 class="service__title">{post.data.title}</h4>
+                        </a>
+                    </article>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    h2{
+        color: #333;
+        font-size: 3rem;
+        margin-bottom: 0;
+    }
+    p {
+        color: #666;
+    }
+    .container {
+        width: 92%;
+        max-width: 1200px;
+        margin: 36px auto;
+    }
+    .swiper-wrapper{
+        padding: 24px 0;
+    }
+    .service {
+        border-radius: 0.75rem;
+        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+    .service__link {
+        display: block;
+        text-decoration: none;
+    }
+
+    .service__link:hover .service__image {
+        transform: scale(1.05);
+    }
+
+    .service__link:hover .service__title {
+        background-color: #edf2f7;
+    }
+
+    .service__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s;
+    }
+    .service__title {
+        margin: 0;
+        padding: 1rem;
+        background-color: #f7fafc;
+        text-align: center;
+        font-size: 1.25rem;
+        font-weight: 400;
+        transition: background-color 0.3s;
+    }
+</style>
+
+<script>
+    import Swiper from 'swiper';
+    const swiper = new Swiper('.services-swiper', {
+        slidesPerView: 4,
+        spaceBetween: 12,
+        loop: true,
+    });
+</script>
